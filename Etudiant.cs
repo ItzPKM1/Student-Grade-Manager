@@ -1,119 +1,155 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace DSA_Projet_VérificateurDeNotesÉtudiants;
 
-namespace DSA_Projet_VérificateurDeNotesÉtudiants
+public class Etudiant
 {
-    //les attributs
-    public class Etudiant
+    private int id;
+    private string prenom;
+    private string nom;
+    private string email;
+    private string numeroDeTelephone;
+
+    private Cours[] cours;
+    private int nombreCours;
+    private double noteFinal;
+
+    public const int minCours = 1;
+    public const int maxCours = 5;
+
+    public Etudiant()
     {
-        private int id;
-        private string prenom;
-        private string nom;
-        private double note1;
-        private double note2;
-        private double note3;
-        private double noteFinal;
+        id = 0;
+        prenom = "";
+        nom = "";
+        email = "";
+        numeroDeTelephone = "";
 
-        public Etudiant()
-        {
-            id = 0;
-            prenom = "";
-            nom = "";
-            note1 = 0;
-            note2 = 0;
-            note3 = 0;
-            noteFinal = 0;
+        cours = new Cours[maxCours];
+        nombreCours = 0;
+        noteFinal = 0;
+    }
 
-        }
+    public int getId()
+    {
+        return id;
+    }
 
-        public int getId()
-        {
-            return id;
-        }
-        public string getPrenom()
-        {
-            return prenom;
-        }
-        public string getNom()
-        {
-            return nom;
-        }
+    public string getPrenom()
+    {
+        return prenom;
+    }
 
-        public double getNote1()
-        {
-            return note1;
-        }
-        public double getNote2() 
-        {
-            return note2;
-        }
-        public double getNote3() 
-        {
-            return note3;
-        }
+    public string getNom()
+    {
+        return nom;
+    }
 
-        public double getNoteFinal() 
-        {
-            return noteFinal;
-        }
-      
+    public string getEmail()
+    {
+        return email;
+    }
 
-        //Setters
-        public void SetId(int id)
+    public string getNumeroDeTelephone()
+    {
+        return numeroDeTelephone;
+    }
+
+    public Cours[] getCours()
+    {
+        return cours;
+    }
+
+    public int getNombreCours()
+    {
+        return nombreCours;
+    }
+
+    public double getNoteFinal()
+    {
+        return noteFinal;
+    }
+
+    public void setId(int id)
+    {
+        if (id > 0)
         {
             this.id = id;
         }
+    }
 
-        public void SetFirstName(string firstName)
+    public void setPrenom(string prenom)
+    {
+        this.prenom = prenom;
+    }
+
+    public void setNom(string nom)
+    {
+        this.nom = nom;
+    }
+
+    public void setEmail(string email)
+    {
+        this.email = email;
+    }
+
+    public void setNumeroDeTelephone(string numeroDeTelephone)
+    {
+        this.numeroDeTelephone = numeroDeTelephone;
+    }
+
+    public void ajouterCours(Cours c)
+    {
+        if (c == null || !c.coursValide())
         {
-            this.prenom = firstName;
+            throw new ArgumentException("Cours invalide.");
         }
 
-        public void SetLastName(string lastName)
+        if (nombreCours >= maxCours)
         {
-            this.nom = lastName;
+            throw new ArgumentException("Nombre maximum de cours atteint.");
         }
 
-        public void SetNote1(double note1)
+        cours[nombreCours] = c;
+        nombreCours++;
+    }
+
+    public bool verifierNombreCours()
+    {
+        return nombreCours >= minCours && nombreCours <= maxCours;
+    }
+
+    public void CalculNoteFinal()
+    {
+        if (!verifierNombreCours())
         {
-            if (note1 >= 0 && note1 <= 100)
-            {
-                this.note1 = note1;
-            }
+            throw new ArgumentException("L'étudiant doit avoir au moins un cours.");
         }
 
-        public void SetNote2(double note2)
+        double somme = 0;
+
+        for (int i = 0; i < nombreCours; i++)
         {
-            if (note2 >= 0 && note2 <= 100)
-            {
-                this.note2 = note2;
-            }
+            cours[i].CalculMoyenneDeCours();
+            somme += cours[i].getMoyenneDeCours();
         }
 
-        public void SetNote3(double note3)
+        noteFinal = somme / nombreCours;
+    }
+
+    public override string ToString()
+    {
+        string infoCours = "";
+
+        for (int i = 0; i < nombreCours; i++)
         {
-            if (note3 >= 0 && note3 <= 100)
-            {
-                this.note3 = note3;
-            }
+            infoCours += "\n   " + cours[i].ToString(); // fix
         }
 
-        //calcul note final
-        public void CalculNoteFinal()
-        {
-            noteFinal = (note1 + note2 + note3) / 3.0;
-
-        }
-
-        // Override à toString
-        public override string ToString()
-        {
-            return "id: " + id + " Prenom: " + prenom + " Nom: " + nom + " Note 1: " + note1 + " Note 2: " + note2 +
-                   " Note 3: " + note3 +
-                   " Note final: " + noteFinal;
-        }
+        return "ID: " + id +
+               " Prenom: " + prenom +
+               " Nom: " + nom +
+               " Email: " + email +
+               " Numéro de téléphone: " + numeroDeTelephone +
+               " Cours: " + infoCours +
+               " Note finale: " + noteFinal;
     }
 }
