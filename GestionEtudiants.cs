@@ -44,6 +44,18 @@ public class GestionEtudiants
             return null;
         }
     }
+    public Etudiant RechercheLineaireParID(int id)
+    {
+        NoeudEtudiant noeud = liste.RechercheParId(id);
+
+        if (noeud == null)
+        {
+            return null;
+        }
+
+        return noeud.getData();
+    }
+
     public NoeudEtudiant getHead() //retorune le premier noeud de la liste chaînée des etudiants pour permettre l'accès aux données dans d'atures classes
     {
         return liste.getHead();
@@ -83,7 +95,7 @@ public class GestionEtudiants
         return somme / count;
     }
 
-    public double[] FindMinMax() //Mime we might not need this because we have the FindMinMax class but I think it's better to have it here because we can use the linked list instead of converting it to an array and then finding min and max.
+    public double[] FindMinMax()
     {
         if (liste.getCount() == 0)
         {
@@ -135,8 +147,10 @@ public class GestionEtudiants
         }
 
         QuickSort(etudiants, 0, count - 1); //
+        liste = new ListeDoubleEtudiants();
         for (int j = 0; j < count; j++)
         {
+            liste.AddLast(etudiants[j]);
             Console.WriteLine(etudiants[j]);
         }
     }

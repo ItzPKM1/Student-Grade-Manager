@@ -45,6 +45,11 @@ public class Cours
         return notes;
     }
 
+    public double[] getPonderations()
+    {
+        return ponderations;
+    }
+
     public double getMoyenneDeCours()
     {
         return moyenneDeCours;
@@ -136,6 +141,6 @@ public class Cours
                " Heures: " + nombreHeures +
                " Credits: " + nombreCredits +
                " Notes: " + string.Join(", ", notes) +
-               " Moyenne: " + moyenneDeCours;
+               " Moyenne: " + Math.Round(moyenneDeCours, 2);
     }
 }

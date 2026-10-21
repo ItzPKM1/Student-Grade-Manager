@@ -112,6 +112,21 @@ public class Etudiant
         nombreCours++;
     }
 
+    public void remplacerCours(int index, Cours c)
+    {
+        if (index < 0 || index >= nombreCours)
+        {
+            throw new ArgumentException("Index de cours invalide.");
+        }
+
+        if (c == null || !c.coursValide())
+        {
+            throw new ArgumentException("Cours invalide.");
+        }
+
+        cours[index] = c;
+    }
+
     public bool verifierNombreCours()
     {
         return nombreCours >= minCours && nombreCours <= maxCours;
@@ -125,14 +140,16 @@ public class Etudiant
         }
 
         double somme = 0;
+        int totalCredits = 0;
 
         for (int i = 0; i < nombreCours; i++)
         {
             cours[i].CalculMoyenneDeCours();
-            somme += cours[i].getMoyenneDeCours();
+            somme += cours[i].getMoyenneDeCours() * cours[i].getNombreCredits();
+            totalCredits += cours[i].getNombreCredits();
         }
 
-        noteFinal = somme / nombreCours;
+        noteFinal = somme / totalCredits;
     }
 
     public override string ToString()
@@ -150,6 +167,6 @@ public class Etudiant
                " Email: " + email +
                " Numéro de téléphone: " + numeroDeTelephone +
                " Cours: " + infoCours +
-               " Note finale: " + noteFinal;
+               " Note finale: " + Math.Round(noteFinal, 2);
     }
 }
