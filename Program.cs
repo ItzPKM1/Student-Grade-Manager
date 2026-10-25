@@ -41,7 +41,7 @@ class Program
             switch (choix)
             {
                 case "1":
-                    AfficherBanniere(banniereAjouter); // bannière de l'écran, chaque case a la sienne (banniereListe, banniereRecherche, etc.), même chose que le menu (en jaune foncé)
+                    AfficherBanniere(banniereAjouter);
                     //Code pour ajouter un étudiant
                     // Main faire le création de l'étudiant à partir de l'input des entrées 
                     //et envoi à la classe gestion.
@@ -49,7 +49,6 @@ class Program
                     break;
 
                 case "2":
-                    AfficherBanniere(banniereListe); // voir case 1
                     gestion.afficherEtudiants();
                     break;
 
@@ -621,12 +620,6 @@ class Program
  / ___ \ | | (_) | |_| | ||  __/ |
 /_/   \_\/ |\___/ \__,_|\__\___|_|
        |__/";
-
-    static string banniereListe = @" _     _     _
-| |   (_)___| |_ ___
-| |   | / __| __/ _ \
-| |___| \__ \ ||  __/
-|_____|_|___/\__\___|";
 
     static string banniereRecherche = @" ____           _                   _
 |  _ \ ___  ___| |__   ___ _ __ ___| |__   ___

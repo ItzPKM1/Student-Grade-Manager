@@ -17,7 +17,7 @@ New here? [Tutorial.md](Tutorial.md) walks through a first session with the prog
 
 ## What it looks like
 
-The program clears the screen between menus. It opens on a start screen, then shows the menu under a banner, and each option opens on its own screen with its own banner. Errors are shown in red and notices (such as "student not found") in yellow. After each action the program waits for a key, so the result stays on screen until you have read it.
+The program clears the screen between menus. It opens on a start screen, then shows the menu with a cyan "Menu:" heading and cyan option numbers, and each option opens on its own screen with its own banner. The prompt is gray and your answer is cyan. Each student is shown with a bold ID and name and a cyan final grade. Errors are shown in red and notices (such as "student not found") in yellow. After each action the program waits for a key, so the result stays on screen until you have read it.
 
 ## Menu
 
@@ -103,6 +103,8 @@ After the course ended, a later commit revised the submitted code:
 - "Quitter" moved to the end of the menu (it is now option 11), and `FicherEtudiants.cs` was renamed `FichierEtudiants.cs`
 
 A further commit added the console display described above: the start screen, a banner for each option, screen clearing, red and yellow messages, the pause after each action, the 3-second goodbye and the `DEVELOPMENT` switch.
+
+Another commit changed the main menu and the student display to look like the Student Grade Manager card on my portfolio website: a plain cyan "Menu:" heading and numbers, a gray prompt with a cyan answer, a cyan student count, a bold ID line and a cyan final grade.
 
 ## Limitations
 

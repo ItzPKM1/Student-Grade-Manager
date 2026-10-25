@@ -168,7 +168,7 @@ public class Etudiant
                "\n   Téléphone: " + numeroDeTelephone +
                "\n   Cours:" +
                "\n" + infoCours +
-               "\n   \u001b[36mNote finale: " + Math.Round(noteFinal, 2) + "\u001b[0m" + // \u001b[36m met le texte en cyan jusqu'à \u001b[0m
+               "\n   Note finale: \u001b[36m" + Math.Round(noteFinal, 2) + "\u001b[0m" + // \u001b[36m met le texte en cyan jusqu'à \u001b[0m, seulement la note
                "\n" + new string('─', 70); // ligne de séparation entre les étudiants: new string('─', 70) répète le caractère ─ 70 fois
     }
 }
