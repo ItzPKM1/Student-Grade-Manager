@@ -168,7 +168,8 @@ public class Etudiant
                "\n   Téléphone: " + numeroDeTelephone +
                "\n   Cours:" +
                "\n" + infoCours +
-               "\n   Note finale:" + "\u001b[36m" + Math.Round(noteFinal, 2).ToString().PadLeft(62) + "\u001b[0m" + // PadLeft(62) pousse la note à droite, \u001b[36m la met en cyan
-               "\n" + new string('─', 77); // ligne de séparation: new string('─', 77) répète le caractère ─ 77 fois
+               "\n" + new string('─', 77) + // ligne de séparation au-dessus de la note finale: new string('─', 77) répète le caractère ─ 77 fois
+               "\n   Note finale:" + "\u001b[1;36m" + Math.Round(noteFinal, 2).ToString().PadLeft(62) + "\u001b[0m" + // PadLeft(62) pousse la note à droite, \u001b[1;36m la met en gras et en cyan
+               "\n"; // ligne vide pour séparer les étudiants
     }
 }

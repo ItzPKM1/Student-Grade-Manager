@@ -37,8 +37,8 @@ ID: 1042 - Alex Martin
       402-AA      Math             50      3        80, 84, 82             82
       402-AB      Français         50      3        74, 82, 78             78
       402-AC      Programmation    60      3        90, 92, 91             91
-   Note finale:                                                         83.67
 ─────────────────────────────────────────────────────────────────────────────
+   Note finale:                                                         83.67
 ```
 
 Here is where those numbers come from. Each course has three grades with a weight each, and the weights add up to 1. For Math the weights are 0.3, 0.3 and 0.4, so the average is 80 × 0.3 + 84 × 0.3 + 82 × 0.4 = 82. The final grade is the average of the three course averages, weighted by credits. All three courses are worth 3 credits here, so it is (82 + 78 + 91) ÷ 3 = 83.67.
