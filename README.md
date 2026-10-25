@@ -4,6 +4,8 @@ A console application in C# for managing students, their courses and their grade
 
 The point of the project was to build the main data structures and algorithms by hand, so the student list is a hand-built doubly linked list, and the sorting and the linear search are written out in full.
 
+New here? [Tutorial.md](Tutorial.md) walks through a first session with the program.
+
 ## What it does
 
 - Add a student with an ID, name, email, phone number and 1 to 5 courses
@@ -12,6 +14,10 @@ The point of the project was to build the main data structures and algorithms by
 - Sort the students by ID
 - Show the lowest and highest final grade, and the class average
 - Save the students to a file and load them back later
+
+## What it looks like
+
+The program clears the screen between menus. It opens on a start screen, then shows the menu under a banner, and each option opens on its own screen with its own banner. Errors are shown in red and notices (such as "student not found") in yellow. After each action the program waits for a key, so the result stays on screen until you have read it.
 
 ## Menu
 
@@ -47,23 +53,27 @@ A course average is the weighted sum of its three grades, so the three weights h
 
 | File | Purpose |
 | --- | --- |
-| `Program.cs` | The menu and all user input |
+| `Program.cs` | The menu, all user input, and the screen display (clearing, colors, banners) |
 | `GestionEtudiants.cs` | Ties the list and the dictionary together, plus sorting and statistics |
 | `Etudiant.cs` | A student and their final grade |
 | `Cours.cs` | A course, its three grades and weights |
 | `ListeDoubleEtudiants.cs` | The linked list |
 | `NoeudEtudiant.cs` | One node of the list |
 | `FichierEtudiants.cs` | Saving to and loading from `etudiants.txt` |
+| `etudiants.txt` | A sample save file with one made-up student |
+| `Tutorial.md` | A walkthrough of the program |
 
 ## Running it
 
-You need the [.NET 8 SDK](https://dotnet.microsoft.com/download).
+You need the [.NET 8 SDK](https://dotnet.microsoft.com/download). Run it from a real terminal (Terminal on macOS, Windows Terminal or PowerShell on Windows), because the program clears the screen and waits for single key presses.
 
 ```
 git clone https://github.com/ItzPKM1/student-grade-checker.git
 cd student-grade-checker
 dotnet run
 ```
+
+If you run it from an IDE console that crashes when the program waits for a key, open `Program.cs` and change `DEVELOPMENT` to `true`. In that mode the program does not clear the screen and waits for Enter instead of a key press.
 
 ## The save file
 
@@ -92,11 +102,18 @@ After the course ended, a later commit revised the submitted code:
 - Averages and final grades are now rounded when shown
 - "Quitter" moved to the end of the menu (it is now option 11), and `FicherEtudiants.cs` was renamed `FichierEtudiants.cs`
 
+A further commit added the console display described above: the start screen, a banner for each option, screen clearing, red and yellow messages, the pause after each action, the 3-second goodbye and the `DEVELOPMENT` switch.
+
 ## Limitations
 
 - Students can only be sorted by ID, not by name or grade
 - The hash table is .NET's `Dictionary`, not one written for this project
 - Everything is kept in memory, so changes are lost unless you save
+- The banners use block and box-drawing characters, so they need a terminal that supports UTF-8 to display correctly
+
+## Acknowledgements
+
+The console display (clearing the screen, colors, ASCII banners, the `DEVELOPMENT` switch and the "Continuer..." pause) was inspired by Shayan Delbari's [factoid project](https://github.com/shayandelbari/factoid-project), which Shayan suggested as a model.
 
 ## Authors
 

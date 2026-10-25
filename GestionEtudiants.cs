@@ -15,7 +15,7 @@ public class GestionEtudiants
     {
         if (tableauHash.ContainsKey(e.getId()))
         {
-            Console.WriteLine("Un étudiant avec cet ID existe déjà.");
+            Program.Erreur("Un étudiant avec cet ID existe déjà."); // même message qu'avant mais en rouge; Program. parce que la méthode est dans la classe Program
             return;
         }
         liste.AddLast(e);
@@ -70,7 +70,7 @@ public class GestionEtudiants
         }
         else
         {
-            Console.WriteLine("Étudiant avec l'ID spécifié non trouvé.");
+            Program.Avertissement("Étudiant avec l'ID spécifié non trouvé."); // même message qu'avant mais en jaune; Program. parce que la méthode est dans la classe Program
         }
     }
 
@@ -132,7 +132,7 @@ public class GestionEtudiants
         int count = liste.getCount();
         if (count == 0)
         {
-            Console.WriteLine("Il n'y a pas d'étudiants à trier.");
+            Program.Avertissement("Il n'y a pas d'étudiants à trier.");
             return;
         }
 

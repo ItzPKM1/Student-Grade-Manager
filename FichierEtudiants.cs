@@ -8,7 +8,7 @@ public class FichierEtudiants
     {
         if (gestion.getHead() == null)
         {
-            Console.WriteLine("Il n'y a aucun étudiant à sauvegarder.");
+            Program.Avertissement("Il n'y a aucun étudiant à sauvegarder."); // même message qu'avant mais en jaune; Program. parce que la méthode est dans la classe Program
             return;
         }
 
@@ -48,7 +48,7 @@ public class FichierEtudiants
     {
         if (!File.Exists(fileName))
         {
-            Console.WriteLine("Aucun fichier trouvé.");
+            Program.Avertissement("Aucun fichier trouvé.");
             return;
         }
 
@@ -102,7 +102,7 @@ public class FichierEtudiants
 
                 if (gestion.idExiste(e.getId()))
                 {
-                    Console.WriteLine("L'étudiant avec l'ID " + e.getId() + " existe déjà, il a été ignoré.");
+                    Program.Avertissement("L'étudiant avec l'ID " + e.getId() + " existe déjà, il a été ignoré.");
                 }
                 else
                 {
@@ -112,7 +112,7 @@ public class FichierEtudiants
             }
             catch
             {
-                Console.WriteLine("Ligne invalide, elle a été ignorée: " + line);
+                Program.Avertissement("Ligne invalide, elle a été ignorée: " + line);
             }
         }
 

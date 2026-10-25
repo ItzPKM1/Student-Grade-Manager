@@ -65,7 +65,7 @@ public class ListeDoubleEtudiants
         // vérifier si la liste est vide ou pas
         if (current == null)
         {
-            Console.WriteLine("Il n'y a pas d'étudiants dans la liste");
+            Program.Avertissement("Il n'y a pas d'étudiants dans la liste"); // même message qu'avant mais en jaune; Program. parce que la méthode est dans la classe Program
             return;
         }
 
