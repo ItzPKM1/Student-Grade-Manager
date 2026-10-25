@@ -149,6 +149,6 @@ public class Cours
                nombreHeures.ToString().PadRight(8) + // PadRight marche sur du texte, alors on transforme le nombre en texte avec ToString()
                nombreCredits.ToString().PadRight(9) + // colonne Crédits
                string.Join(", ", notes).PadRight(18) + // colonne Notes
-               Math.Round(moyenneDeCours, 2); // colonne Moyenne, la dernière alors pas besoin de PadRight
+               Math.Round(moyenneDeCours, 2).ToString().PadLeft(7); // PadLeft(7) aligne les nombres à droite sous "Moyenne"
     }
 }

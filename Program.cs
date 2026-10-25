@@ -20,18 +20,30 @@ class Program
             Console.ForegroundColor = ConsoleColor.Cyan; // le titre "Menu:" en cyan
             Console.WriteLine("Menu:");
             Console.ResetColor(); // remet la couleur normale pour la liste des options
+            Console.WriteLine("");
             ItemMenu("1", "Ajouter un étudiant"); // écrit le numéro en cyan et le texte en couleur normale, voir ItemMenu plus bas
+            Console.WriteLine("");
             ItemMenu("2", "Afficher les étudiants");
+            Console.WriteLine("");
             ItemMenu("3", "Rechercher un étudiant par ID");
+            Console.WriteLine("");
             ItemMenu("4", "Trier les étudiants par ID");
+            Console.WriteLine("");
             ItemMenu("5", "Supprimer un étudiant");
+            Console.WriteLine("");
             ItemMenu("6", "Trouver et afficher la note minimale et maximale");
+            Console.WriteLine("");
             ItemMenu("7", "Afficher la moyenne de la classe");
+            Console.WriteLine("");
             ItemMenu("8", "Sauvegarder les étudiants dans un fichier");
+            Console.WriteLine("");
             ItemMenu("9", "Lire les étudiants du fichier");
+            Console.WriteLine("");
             ItemMenu("10", "Modifier un étudiant");
+            Console.WriteLine("");
             ItemMenu("11", "Quitter");
             Console.ForegroundColor = ConsoleColor.DarkGray; // la question en gris
+            Console.WriteLine("");
             Console.Write("Choisissez une option: ");
             Console.ForegroundColor = ConsoleColor.Cyan; // ce que l'utilisateur tape s'affiche en cyan
             string choix = Lire();
@@ -584,7 +596,7 @@ class Program
     static void ItemMenu(string numero, string texte) // reçoit le numéro et le texte séparément pour pouvoir colorer juste le numéro
     {
         Console.ForegroundColor = ConsoleColor.Cyan; // la couleur ne s'applique qu'au numéro
-        Console.Write(numero.PadLeft(2) + ". "); // Write (pas WriteLine) pour que le texte s'écrive sur la même ligne; PadLeft(2) ajoute un espace devant les numéros à un chiffre pour les aligner avec 10 et 11
+        Console.Write(numero + ". "); // Write (pas WriteLine) pour que le texte s'écrive sur la même ligne; les numéros restent alignés à gauche, comme sur le site
         Console.ResetColor(); // remet la couleur normale avant d'écrire le texte
         Console.WriteLine(texte); // le texte reste dans la couleur normale
     }
