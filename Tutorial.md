@@ -28,20 +28,20 @@ Loading adds students to the current list. If you load the same file twice, the 
 Type `2` ("Afficher les étudiants"). You get the student's details, their courses and their final grade:
 
 ```
-Nombre d'étudiants:1
-ID 123 - Akshay Kheterpal
-   Email:     akshay.kheterpal@example.com
-   Téléphone: 514-555-0123
+Nombre d'étudiants: 1
+ID: 1042 - Alex Martin
+   Email:     alex.martin@example.com
+   Téléphone: 514-555-0100
    Cours:
       Code        Titre            Heures  Crédits  Notes             Moyenne
-      402-AA      Math             50      3        90, 92, 80        86.6
-      402-AB      Science          50      3        83, 82, 75        79.5
-      402-AC      Programming      60      3        60, 48, 68        59.6
-   Note finale: 75.23
-──────────────────────────────────────────────────────────────────────
+      402-AA      Math             50      3        80, 84, 82             82
+      402-AB      Français         50      3        74, 82, 78             78
+      402-AC      Programmation    60      3        90, 92, 91             91
+   Note finale:                                                         83.67
+─────────────────────────────────────────────────────────────────────────────
 ```
 
-Here is where those numbers come from. Each course has three grades with a weight each, and the weights add up to 1. For Math the weights are 0.3, 0.3 and 0.4, so the average is 90 × 0.3 + 92 × 0.3 + 80 × 0.4 = 86.6. The final grade is the average of the three course averages, weighted by credits. All three courses are worth 3 credits here, so it is (86.6 + 79.5 + 59.6) ÷ 3 = 75.23.
+Here is where those numbers come from. Each course has three grades with a weight each, and the weights add up to 1. For Math the weights are 0.3, 0.3 and 0.4, so the average is 80 × 0.3 + 84 × 0.3 + 82 × 0.4 = 82. The final grade is the average of the three course averages, weighted by credits. All three courses are worth 3 credits here, so it is (82 + 78 + 91) ÷ 3 = 83.67.
 
 ## 4. Add a student
 
