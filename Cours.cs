@@ -136,11 +136,19 @@ public class Cours
 
     public override string ToString()
     {
-        return "Code: " + codeCours +
-               " Titre: " + titre +
-               " Heures: " + nombreHeures +
-               " Credits: " + nombreCredits +
-               " Notes: " + string.Join(", ", notes) +
-               " Moyenne: " + Math.Round(moyenneDeCours, 2);
+        // si le titre est trop long on le coupe pour que les colonnes restent alignées (Substring(0, 15) garde les 15 premiers caractères)
+        string titreCourt = titre;
+        if (titre.Length > 16)
+        {
+            titreCourt = titre.Substring(0, 15) + "…";
+        }
+
+        // PadRight(n) ajoute des espaces à la fin du texte jusqu'à n caractères, comme ça les colonnes sont alignées d'un cours à l'autre
+        return codeCours.PadRight(12) + // colonne Code
+               titreCourt.PadRight(17) + // colonne Titre (17 = 16 caractères + 1 espace avant la colonne suivante)
+               nombreHeures.ToString().PadRight(8) + // PadRight marche sur du texte, alors on transforme le nombre en texte avec ToString()
+               nombreCredits.ToString().PadRight(9) + // colonne Crédits
+               string.Join(", ", notes).PadRight(18) + // colonne Notes
+               Math.Round(moyenneDeCours, 2); // colonne Moyenne, la dernière alors pas besoin de PadRight
     }
 }

@@ -28,10 +28,17 @@ Loading adds students to the current list. If you load the same file twice, the 
 Type `2` ("Afficher les étudiants"). You get the student's details, their courses and their final grade:
 
 ```
-ID: 123 Prenom: Akshay Nom: Kheterpal Email: akshay.kheterpal@example.com Numéro de téléphone: 514-555-0123 Cours:
-   Code: 402-AA Titre: Math Heures: 50 Credits: 3 Notes: 90, 92, 80 Moyenne: 86.6
-   Code: 402-AB Titre: Science Heures: 50 Credits: 3 Notes: 83, 82, 75 Moyenne: 79.5
-   Code: 402-AC Titre: Programming Heures: 60 Credits: 3 Notes: 60, 48, 68 Moyenne: 59.6 Note finale: 75.23
+Nombre d'étudiants:1
+ID 123 - Akshay Kheterpal
+   Email:     akshay.kheterpal@example.com
+   Téléphone: 514-555-0123
+   Cours:
+      Code        Titre            Heures  Crédits  Notes             Moyenne
+      402-AA      Math             50      3        90, 92, 80        86.6
+      402-AB      Science          50      3        83, 82, 75        79.5
+      402-AC      Programming      60      3        60, 48, 68        59.6
+   Note finale: 75.23
+──────────────────────────────────────────────────────────────────────
 ```
 
 Here is where those numbers come from. Each course has three grades with a weight each, and the weights add up to 1. For Math the weights are 0.3, 0.3 and 0.4, so the average is 90 × 0.3 + 92 × 0.3 + 80 × 0.4 = 86.6. The final grade is the average of the three course averages, weighted by credits. All three courses are worth 3 credits here, so it is (86.6 + 79.5 + 59.6) ÷ 3 = 75.23.
@@ -59,7 +66,7 @@ If you type something the program can't accept, it shows the problem in red and 
 
 - `6` shows the lowest and highest final grade in the class.
 - `7` shows the class average.
-- `4` sorts the students by ID. You can see the new order with option `2`.
+- `4` sorts the students by ID and prints the sorted list. Option `2` shows the new order afterwards too.
 
 With no students loaded, these options tell you so in yellow instead of showing numbers.
 

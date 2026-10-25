@@ -154,19 +154,21 @@ public class Etudiant
 
     public override string ToString()
     {
-        string infoCours = "";
+        // en-tête du tableau des cours, avec les mêmes largeurs que dans le ToString de Cours pour que les colonnes tombent au bon endroit
+        string infoCours = "      " + "Code".PadRight(12) + "Titre".PadRight(17) + "Heures".PadRight(8) + "Crédits".PadRight(9) + "Notes".PadRight(18) + "Moyenne";
 
         for (int i = 0; i < nombreCours; i++)
         {
-            infoCours += "\n   " + cours[i].ToString(); // fix
+            infoCours += "\n      " + cours[i].ToString(); // fix
         }
 
-        return "ID: " + id +
-               " Prenom: " + prenom +
-               " Nom: " + nom +
-               " Email: " + email +
-               " Numéro de téléphone: " + numeroDeTelephone +
-               " Cours: " + infoCours +
-               " Note finale: " + Math.Round(noteFinal, 2);
+        // \n = nouvelle ligne, ça met chaque info sur sa propre ligne au lieu d'une seule longue ligne
+        return "ID " + id + " - " + prenom + " " + nom +
+               "\n   Email:     " + email + // les espaces après Email: alignent l'email avec le téléphone en dessous
+               "\n   Téléphone: " + numeroDeTelephone +
+               "\n   Cours:" +
+               "\n" + infoCours +
+               "\n   Note finale: " + Math.Round(noteFinal, 2) +
+               "\n" + new string('─', 70); // ligne de séparation entre les étudiants: new string('─', 70) répète le caractère ─ 70 fois
     }
 }
