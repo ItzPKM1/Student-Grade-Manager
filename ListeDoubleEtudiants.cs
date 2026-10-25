@@ -69,7 +69,10 @@ public class ListeDoubleEtudiants
             return;
         }
 
-        Console.WriteLine("Nombre d'étudiants:" + count);
+        Console.Write("Nombre d'étudiants: "); // Write pour que le nombre s'écrive sur la même ligne
+        Console.ForegroundColor = ConsoleColor.Cyan; // juste le nombre en cyan
+        Console.WriteLine(count);
+        Console.ResetColor(); // remet la couleur normale
 
     
         while (current != null)

@@ -163,12 +163,12 @@ public class Etudiant
         }
 
         // \n = nouvelle ligne, ça met chaque info sur sa propre ligne au lieu d'une seule longue ligne
-        return "ID " + id + " - " + prenom + " " + nom +
+        return "\u001b[1mID: " + id + " - " + prenom + " " + nom + "\u001b[0m" + // \u001b[1m met le texte en gras jusqu'à \u001b[0m (code ANSI, comme la couleur en cyan plus bas)
                "\n   Email:     " + email + // les espaces après Email: alignent l'email avec le téléphone en dessous
                "\n   Téléphone: " + numeroDeTelephone +
                "\n   Cours:" +
                "\n" + infoCours +
-               "\n   Note finale: " + Math.Round(noteFinal, 2) +
+               "\n   \u001b[36mNote finale: " + Math.Round(noteFinal, 2) + "\u001b[0m" + // \u001b[36m met le texte en cyan jusqu'à \u001b[0m
                "\n" + new string('─', 70); // ligne de séparation entre les étudiants: new string('─', 70) répète le caractère ─ 70 fois
     }
 }

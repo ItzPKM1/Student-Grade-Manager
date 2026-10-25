@@ -1,4 +1,4 @@
-﻿namespace DSA_Projet_VérificateurDeNotesÉtudiants;
+namespace DSA_Projet_VérificateurDeNotesÉtudiants;
 
 class Program
 {
@@ -17,21 +17,25 @@ class Program
         while (!quitter)
         {
             if (!DEVELOPMENT) Console.Clear(); // ! veut dire "pas": si on est pas en mode DEVELOPMENT, on efface le terminal, donc le menu s'affiche sur un écran vide à chaque fois
-            AfficherBanniere(banniereMenu); // remplace Console.WriteLine("Menu:"); par une bannière
-            Console.WriteLine("1. Ajouter un étudiant");
-            Console.WriteLine("2. Afficher les étudiants");
-            Console.WriteLine("3. Rechercher un étudiant par ID");
-            Console.WriteLine("4. Trier les étudiants par ID");
-            Console.WriteLine("5. Supprimer un étudiant");
-            Console.WriteLine("6. Trouver et afficher la note minimale et maximale");
-            Console.WriteLine("7. Afficher la moyenne de la classe");
-            Console.WriteLine("8. Sauvegarder les étudiants dans un fichier");
-            Console.WriteLine("9. Lire les étudiants du fichier");
-            Console.WriteLine("10. Modifier un étudiant");
-            Console.WriteLine("11. Quitter");
+            Console.ForegroundColor = ConsoleColor.Cyan; // le titre "Menu:" en cyan
+            Console.WriteLine("Menu:");
+            Console.ResetColor(); // remet la couleur normale pour la liste des options
+            ItemMenu("1", "Ajouter un étudiant"); // écrit le numéro en cyan et le texte en couleur normale, voir ItemMenu plus bas
+            ItemMenu("2", "Afficher les étudiants");
+            ItemMenu("3", "Rechercher un étudiant par ID");
+            ItemMenu("4", "Trier les étudiants par ID");
+            ItemMenu("5", "Supprimer un étudiant");
+            ItemMenu("6", "Trouver et afficher la note minimale et maximale");
+            ItemMenu("7", "Afficher la moyenne de la classe");
+            ItemMenu("8", "Sauvegarder les étudiants dans un fichier");
+            ItemMenu("9", "Lire les étudiants du fichier");
+            ItemMenu("10", "Modifier un étudiant");
+            ItemMenu("11", "Quitter");
+            Console.ForegroundColor = ConsoleColor.DarkGray; // la question en gris
             Console.Write("Choisissez une option: ");
-
+            Console.ForegroundColor = ConsoleColor.Cyan; // ce que l'utilisateur tape s'affiche en cyan
             string choix = Lire();
+            Console.ResetColor(); // remet la couleur normale après la réponse
             if (!DEVELOPMENT) Console.Clear(); // efface le menu pour que l'option choisie ait un écran propre
 
             switch (choix)
@@ -572,10 +576,18 @@ class Program
     static void AfficherBanniere(string banniere) // reçoit le texte de la bannière en paramètre, comme ça une seule méthode sert pour les 11 bannières
     {
         // dans le projet factoid de Shayan, il font ces 3 lignes directement dans chaque méthode, moi je les mets ici pour ne pas les répéter 11 fois
-        Console.ForegroundColor = ConsoleColor.DarkYellow; // Console.ForegroundColor change la couleur de tout ce qui s'écrit après
+        Console.ForegroundColor = ConsoleColor.Cyan; // Console.ForegroundColor change la couleur de tout ce qui s'écrit après
         Console.WriteLine(banniere); // affiche la bannière (en jaune foncé)
         Console.ResetColor(); // sans ça tout le reste du programme reste jaune
         Console.WriteLine(); // ligne vide sous la bannière
+    }
+
+    static void ItemMenu(string numero, string texte) // reçoit le numéro et le texte séparément pour pouvoir colorer juste le numéro
+    {
+        Console.ForegroundColor = ConsoleColor.Cyan; // la couleur ne s'applique qu'au numéro
+        Console.Write(numero.PadLeft(2) + ". "); // Write (pas WriteLine) pour que le texte s'écrive sur la même ligne; PadLeft(2) ajoute un espace devant les numéros à un chiffre pour les aligner avec 10 et 11
+        Console.ResetColor(); // remet la couleur normale avant d'écrire le texte
+        Console.WriteLine(texte); // le texte reste dans la couleur normale
     }
 
     public static void Erreur(string message) // public pour que les autres fichiers puissent l'utiliser, static pour l'appeler avec Program.Erreur(...) sans créer d'objet Program
@@ -602,12 +614,6 @@ class Program
 ██║╚██╗██║██║   ██║   ██║   ██╔══╝  ╚════██║
 ██║ ╚████║╚██████╔╝   ██║   ███████╗███████║
 ╚═╝  ╚═══╝ ╚═════╝    ╚═╝   ╚══════╝╚══════╝";
-
-    static string banniereMenu = @" __  __
-|  \/  | ___ _ __  _   _
-| |\/| |/ _ \ '_ \| | | |
-| |  | |  __/ | | | |_| |
-|_|  |_|\___|_| |_|\__,_|";
 
     static string banniereAjouter = @"    _     _             _
    / \   (_) ___  _   _| |_ ___ _ __
